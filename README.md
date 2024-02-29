@@ -28,3 +28,28 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+a
+b
+c
+d
+e
+---------------------------------
+500
+-----------------
+e paid 500  / 5 = 100
+-----------------
+a -100
+b -100
+c -100
+d -100
+e  (500) - 100 = 400
+-----------------
+a paid 400 / 4 = 100  
+--------------------------
+Priyanshi a = 400 (-100, -100)  = + 200
+b = -100, 
+c = -200
+d = -200
+Ravi e = 500 (- 100, -100 ) = +300 
+

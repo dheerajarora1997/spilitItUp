@@ -4,22 +4,25 @@ interface IParticipants {
   name : string;
   id : string;
   email ?: string; 
-  phone ?: string; 
+  phone ?: number; 
 }
 
-interface IExpanses {
-  paidBy : string,
-  description : string;
-  expancesParticipants : IParticipants[]
+interface IExpense {
+  paidBy : string, // user ID who paid the Bill
+  description : string; // Pay for which Item
+  amount : number; // Amount bill paid 
+  expanceDate : string | Date | number;
+  expancesParticipants : IParticipants[];
 }
 
-interface mySplitApp {
-  participants : IParticipants[];
-  expanses : IExpanses[];
+export interface mySplitApp {
   name : string;
   groupType : 'Trip' | 'Home' | 'Other';
+  participantsList : IParticipants[]; 
+  expenseList  ?: IExpense[]; // 
+  totalExpense  ?: number; // 
   groupAvatar ?: string; 
-  creationDate : string;
+  creationDate : string | Date | number;
 }
 
 interface ExampleState {
@@ -34,7 +37,7 @@ const exampleSlice = createSlice({
   name: 'example',
   initialState,
   reducers: {
-    reset(){
+    reset(state:ExampleState){
       state.mySplitApp = undefined;
     },
     updateAppData(state, action){
@@ -43,4 +46,4 @@ const exampleSlice = createSlice({
   },
 });
 export default exampleSlice.reducer;
-export const { actions, reducer: exampleReducer } = exampleSlice;
+export const { reset, updateAppData} = exampleSlice.actions; 
