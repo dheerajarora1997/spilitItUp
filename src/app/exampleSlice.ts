@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface IParticipants {
+export interface IParticipants {
   name : string;
   id : string;
   email ?: string; 
@@ -26,11 +26,13 @@ export interface mySplitApp {
 }
 
 interface ExampleState {
-  mySplitApp ?: mySplitApp[]
+  mySplitApp ?: mySplitApp[];
+  selectedGroup ?: number;
 }
 
 const initialState: ExampleState = {
-
+  mySplitApp : [],
+  selectedGroup: undefined,
 };
 
 const exampleSlice = createSlice({
@@ -40,10 +42,18 @@ const exampleSlice = createSlice({
     reset(state:ExampleState){
       state.mySplitApp = undefined;
     },
-    updateAppData(state, action){
-      state.mySplitApp = action.payload;
+    updateAppData(state:ExampleState, action) {
+      if(!action.payload.expenseList){
+        let haveGroup = state.mySplitApp;
+        haveGroup?.push(action.payload)
+        state.mySplitApp = haveGroup;
+      }
+    }, 
+    selectedGroup(state:ExampleState, action){
+      state.selectedGroup = action.payload;
     }
+
   },
 });
 export default exampleSlice.reducer;
-export const { reset, updateAppData} = exampleSlice.actions; 
+export const { reset, updateAppData, selectedGroup} = exampleSlice.actions; 

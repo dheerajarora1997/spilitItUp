@@ -1,4 +1,30 @@
 $theme-colors: (
-  'info': tomato,
-  'danger': teal
+  "info": tomato,
+  "danger": teal,
 );
+
+.d-flex{
+  display: flex;
+}
+
+.mb-3{
+  margin-bottom: 1rem;
+}
+
+.parent-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding: 0;
+  padding: 0;
+  div.wrapper {
+    height: 100%;
+    width: 100%;
+    padding : 10px;
+    background: #b5c0d0;
+    border-left: 1px solid #81868d;
+    &:nth-child(1){
+      border: none;
+    }
+  }
+}
