@@ -9,7 +9,8 @@ const expensesSlice = createSlice({
   initialState,
   reducers: {
     addExpense(state, action) {
-      state.expenses.push(action.payload);
+      console.log(state, action.payload)
+      // state.expenses.push(action.payload);
     },
   },
 });

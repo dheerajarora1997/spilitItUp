@@ -25,7 +25,7 @@ export interface mySplitApp {
   creationDate : string | Date | number;
 }
 
-interface ExampleState {
+export interface ExampleState {
   mySplitApp ?: mySplitApp[];
   selectedGroup ?: number;
 }

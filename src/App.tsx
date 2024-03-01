@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./App.scss";
 import { IParticipants, mySplitApp, selectedGroup, updateAppData } from "./app/exampleSlice";
 import { useState } from "react";
+import { RootState } from "./app/store";
 
 const App = () => {
   const initialState : mySplitApp = {
@@ -18,7 +19,9 @@ const App = () => {
 
   const [payload, setPayload] = useState<mySplitApp>(initialState);
   const dispatch = useDispatch();
-  const mySplitApp = useSelector((state) => state.example.mySplitApp);
+  // const mySplitApp = useSelector((state) => state.example.mySplitApp);
+  const mySplitApp = useSelector((state: RootState) => state.example.mySplitApp);
+
 
   const createGroup = () => {
     dispatch(updateAppData(payload));
@@ -83,7 +86,7 @@ const App = () => {
           <button onClick={createGroup}>Create Group</button>
           <h3>Listing of Groups</h3>
 
-          {mySplitApp.map((splitGroup: mySplitApp)=>{
+          {mySplitApp?.map((splitGroup: mySplitApp)=>{
             return (
               <div>{splitGroup.name } | {splitGroup.participantsList.length}</div>
             )
@@ -92,7 +95,7 @@ const App = () => {
         </div>
 
         <div className="wrapper">
-        {mySplitApp.map((splitGroup: mySplitApp, index: number)=>{
+        {mySplitApp?.map((splitGroup: mySplitApp, index: number)=>{
             return (
               <button key={index} onClick={()=>{groupSelected(index)}}>{splitGroup.name }</button>
             )
