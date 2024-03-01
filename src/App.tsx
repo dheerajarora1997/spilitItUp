@@ -1,15 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "react-bootstrap";
 import "./App.scss";
 import { IParticipants, mySplitApp, selectedGroup, updateAppData } from "./app/exampleSlice";
-import UserList from "./userList";
 import { useState } from "react";
 
 const App = () => {
-  const user : IParticipants = {
-    name: "",
-    id: "", 
-  }
   const initialState : mySplitApp = {
     name: "",
     groupType: "Trip",
@@ -24,7 +18,6 @@ const App = () => {
 
   const [payload, setPayload] = useState<mySplitApp>(initialState);
   const dispatch = useDispatch();
-  const example = useSelector((state) => state.example);
   const mySplitApp = useSelector((state) => state.example.mySplitApp);
 
   const createGroup = () => {
